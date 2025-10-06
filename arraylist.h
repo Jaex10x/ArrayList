@@ -65,9 +65,9 @@ class ArrayList : public List {
         array[index] = 0;
         if(index < 2.0/3 *capacity){
             dynamic_shrink();
-            return removed;
         }
-        return -1;
+        return removed;
+        
     }
     void removeAll(int num){
         int i = 0;
