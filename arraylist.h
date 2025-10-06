@@ -21,6 +21,7 @@ class ArrayList : public List {
     void dynamic_shrink(){
         if(capacity == INITIAL_CAPACITY) return;
         int new_size = ceil(capacity * SHRINK_FACTOR);
+        if(capacity < INITIAL_CAPACITY) new_size = INITIAL_CAPACITY;
         int* new_array = (int*) realloc(array,new_size * sizeof(int));
         if(new_array){
             array = new_array;
