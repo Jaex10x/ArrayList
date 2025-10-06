@@ -14,7 +14,7 @@ class ArrayList : public List {
     void dynamic_expand(){
         int new_size = ceil(capacity * GROWTH_FACTOR);
         int* new_array = (int*) realloc(array, new_size * sizeof(int));
-        if(new_array)}
+        if(new_array){
         array = new_array;
         capacity = new_size;
     }
@@ -48,7 +48,8 @@ class ArrayList : public List {
                 int pos = i + 1;
                 for(int j = 0 ; j < index - 1 ; j++) array[j] = array[j + 1];
                 index--;
-                if(index < 2.0/3 *capacity) dynamic_shirnk();
+                array[index] = 0;
+                if(index < 2.0/3 *capacity) dynamic_shrink();
                 return pos;
             }
         }
@@ -60,6 +61,7 @@ class ArrayList : public List {
         int removed = array[pos - 1];
         for(int i = pos - 1 ; i < index - 1 ; i++) array[i] = array[i + 1];
         index--;
+        array[index] = 0;
         if(index < 2.0/3 *capacity){
             dynamic_shrink();
             return removed;
